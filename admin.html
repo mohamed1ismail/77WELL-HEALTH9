@@ -772,18 +772,6 @@
         <span class="material-symbols-outlined">settings</span>
         <span data-ar="الإعدادات" data-en="Settings">الإعدادات</span>
       </button>
-      <button class="nav-item" onclick="showSection('guidelines')">
-        <span class="material-symbols-outlined">lightbulb</span>
-        <span data-ar="الإرشادات الصحية" data-en="Health Guidelines">الإرشادات الصحية</span>
-      </button>
-      <button class="nav-item" onclick="showSection('about')">
-        <span class="material-symbols-outlined">info</span>
-        <span data-ar="من نحن" data-en="About Us">من نحن</span>
-      </button>
-      <button class="nav-item" onclick="showSection('social')">
-        <span class="material-symbols-outlined">share</span>
-        <span data-ar="الروابط الاجتماعية" data-en="Social Links">الروابط الاجتماعية</span>
-      </button>
       <button class="nav-item" onclick="showSection('reviews')">
         <span class="material-symbols-outlined">star</span>
         <span data-ar="التقييمات" data-en="Reviews">التقييمات</span>
@@ -947,70 +935,27 @@
       <div class="panel-header">
         <h2 class="panel-title" data-ar="الإعدادات" data-en="Settings">الإعدادات</h2>
       </div>
-
-      <!-- Branding Settings -->
       <div class="settings-card">
-        <h4 data-ar="الهوية البصرية" data-en="Branding">الهوية البصرية</h4>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="شعار المطعم" data-en="Restaurant Logo">شعار المطعم</label>
-          <input type="file" id="settings-logo" accept="image/jpeg,image/png,image/webp" />
-          <img id="logo-preview"
-            style="max-width:150px;max-height:150px;border-radius:8px;margin-top:8px;display:none;" />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="صورة الغلاف" data-en="Cover Image">صورة الغلاف</label>
-          <input type="file" id="settings-cover" accept="image/jpeg,image/png,image/webp" />
-          <img id="cover-preview"
-            style="max-width:150px;max-height:100px;border-radius:8px;margin-top:8px;display:none;" />
-        </div>
-
-        <!-- Brand Caption -->
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الشعار الفرعي (EN)" data-en="Tagline (EN)">الشعار الفرعي (EN)</label>
-          <input type="text" id="settings-caption-en" placeholder="e.g. Eat Well. Live Well." />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الشعار الفرعي (AR)" data-en="Tagline (AR)">الشعار الفرعي (AR)</label>
-          <input type="text" id="settings-caption-ar" placeholder="مثال: كل صح. عش صح." dir="rtl" />
-        </div>
-
-        <!-- Promotional Banner -->
-        <div style="margin-bottom:12px;padding:12px;background:#f5f5f5;border-radius:8px;">
-          <div class="toggle-wrap">
-            <label class="toggle">
-              <input type="checkbox" id="settings-banner-enabled" />
-              <div class="toggle-knob"></div>
-            </label>
-            <span data-ar="تفعيل البانر الترويجي" data-en="Enable Promotional Banner">تفعيل البانر الترويجي</span>
-          </div>
-          <div class="form-group" style="margin-top:10px;">
-            <label data-ar="نص البانر الترويجي" data-en="Banner Text">نص البانر الترويجي</label>
-            <textarea id="settings-banner-text" placeholder="مثال: عرض خاص - خصم 20% على كل الطلبات"
-              data-placeholder-ar="مثال: عرض خاص - خصم 20%"
-              data-placeholder-en="e.g. Special Offer - 20% off"></textarea>
-          </div>
-        </div>
-
-        <button class="btn btn-green" onclick="saveBrandingSettings()">
-          <span class="material-symbols-outlined">save</span>
-          <span data-ar="حفظ الإعدادات" data-en="Save Settings">حفظ الإعدادات</span>
-        </button>
-      </div>
-
-      <!-- Restaurant Info (original) -->
-      <div class="settings-card" style="margin-top:16px;">
         <h4 data-ar="معلومات المطعم" data-en="Restaurant Info">معلومات المطعم</h4>
         <div class="form-group" style="margin-bottom:12px;">
           <label data-ar="اسم المطعم" data-en="Restaurant Name">اسم المطعم</label>
           <input type="text" id="settings-name" placeholder="Well Health" />
         </div>
-        <div class="form-group" style="margin-bottom:16px;">
+        <div class="form-group" style="margin-bottom:12px;">
           <label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
           <input type="email" id="settings-email" placeholder="admin@wellhealth.com" />
         </div>
-        <button class="btn btn-green" onclick="saveRestaurantInfo()">
+        <div class="form-group" style="margin-bottom:12px;">
+          <label data-ar="شعار المطعم" data-en="Logo">شعار المطعم</label>
+          <input type="file" id="settings-logo" accept="image/*" />
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label data-ar="صورة الغلاف" data-en="Cover Image">صورة الغلاف</label>
+          <input type="file" id="settings-cover" accept="image/*" />
+        </div>
+        <button class="btn btn-green" onclick="saveSettings()">
           <span class="material-symbols-outlined">save</span>
-          <span data-ar="حفظ" data-en="Save">حفظ</span>
+          <span data-ar="حفظ الإعدادات" data-en="Save Settings">حفظ الإعدادات</span>
         </button>
       </div>
     </div>
@@ -1031,55 +976,6 @@
           </thead>
           <tbody id="reviews-tbody"></tbody>
         </table>
-      </div>
-    </div>
-
-    <!-- HEALTH GUIDELINES PANEL -->
-    <div id="panel-guidelines" class="panel">
-      <div class="panel-header">
-        <h2 class="panel-title" data-ar="الإرشادات الصحية" data-en="Health Guidelines">الإرشادات الصحية</h2>
-        <button class="btn btn-green" onclick="openGuidelineModal()">
-          <span class="material-symbols-outlined">add</span>
-          <span data-ar="إضافة إرشادة" data-en="Add Guideline">إضافة إرشادة</span>
-        </button>
-      </div>
-      <div id="guidelines-list" class="table-wrap">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-
-    <!-- ABOUT US PANEL -->
-    <div id="panel-about" class="panel">
-      <div class="panel-header">
-        <h2 class="panel-title" data-ar="من نحن" data-en="About Us">من نحن</h2>
-      </div>
-      <div class="settings-card">
-        <h4 data-ar="نص من نحن (EN)" data-en="About Us Text (EN)">نص من نحن (EN)</h4>
-        <textarea id="about-text-en" placeholder="Write your About Us text in English..."
-          style="width:100%;padding:10px;border:1.5px solid #ddd;border-radius:8px;font-family:'Cairo',sans-serif;min-height:150px;margin-bottom:12px;"></textarea>
-
-        <h4 data-ar="نص من نحن (AR)" data-en="About Us Text (AR)" style="margin-top:12px;">نص من نحن (AR)</h4>
-        <textarea id="about-text-ar" placeholder="اكتب نص من نحن بالعربية..." dir="rtl"
-          style="width:100%;padding:10px;border:1.5px solid #ddd;border-radius:8px;font-family:'Cairo',sans-serif;min-height:150px;margin-bottom:12px;"></textarea>
-
-        <button class="btn btn-green" onclick="saveAboutUs()">
-          <span class="material-symbols-outlined">save</span>
-          <span data-ar="حفظ" data-en="Save">حفظ</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- SOCIAL LINKS PANEL -->
-    <div id="panel-social" class="panel">
-      <div class="panel-header">
-        <h2 class="panel-title" data-ar="الروابط الاجتماعية" data-en="Social Media Links">الروابط الاجتماعية</h2>
-        <button class="btn btn-green" onclick="openSocialLinkModal()">
-          <span class="material-symbols-outlined">add</span>
-          <span data-ar="إضافة رابط" data-en="Add Link">إضافة رابط</span>
-        </button>
-      </div>
-      <div id="social-links-list" class="table-wrap">
-        <!-- Rendered by JS -->
       </div>
     </div>
 
@@ -1215,44 +1111,6 @@
           </div>
         </div>
 
-        <!-- Discount Section -->
-        <div style="margin-bottom:14px;padding:12px;background:#f5f5f5;border-radius:8px;">
-          <div style="margin-bottom:8px;font-size:0.9rem;font-weight:700;color:#555;" data-ar="الخصم (اختياري)"
-            data-en="Discount (Optional)">الخصم (اختياري)</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label data-ar="نوع الخصم" data-en="Discount Type">نوع الخصم</label>
-              <select id="item-discount-type">
-                <option value="none">لا يوجد / None</option>
-                <option value="percentage">نسبة مئوية % / Percentage</option>
-                <option value="fixed">مبلغ ثابت / Fixed Amount</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label data-ar="قيمة الخصم" data-en="Discount Value">قيمة الخصم</label>
-              <input type="number" id="item-discount-value" placeholder="0" min="0" step="0.01" />
-            </div>
-          </div>
-          <div style="font-size:0.8rem;color:#888;margin-top:6px;">
-            <span class="lang-ar">مثال: إذا اخترت نسبة مئوية 10% والسعر 100 ر.س، سيظهر السعر النهائي 90 ر.س</span>
-            <span class="lang-en" style="display:none;">Example: 10% discount on 100 SAR = 90 SAR final price</span>
-          </div>
-        </div>
-
-        <!-- Image Size Control -->
-        <div style="margin-bottom:14px;padding:12px;background:#f5f5f5;border-radius:8px;">
-          <div style="margin-bottom:8px;font-size:0.9rem;font-weight:700;color:#555;" data-ar="حجم الصورة"
-            data-en="Image Size">حجم الصورة</div>
-          <div class="form-group">
-            <label data-ar="حجم العرض" data-en="Display Size">حجم العرض</label>
-            <select id="item-image-size">
-              <option value="small">صغير / Small (80px)</option>
-              <option value="medium" selected>وسط / Medium (120px)</option>
-              <option value="large">كبير / Large (160px)</option>
-            </select>
-          </div>
-        </div>
-
         <!-- Nutrition -->
         <div style="margin-bottom:6px;font-size:0.85rem;font-weight:700;color:#555;" data-ar="القيم الغذائية"
           data-en="Nutrition">القيم الغذائية</div>
@@ -1331,75 +1189,6 @@
       <div class="modal-footer">
         <button class="btn btn-gray" onclick="closeCatModal()" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
         <button class="btn btn-green" onclick="saveCat()" data-ar="حفظ" data-en="Save">حفظ</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======== GUIDELINE MODAL ======== -->
-  <div id="guideline-modal" class="modal-overlay hidden">
-    <div class="modal-box" style="max-width:500px;">
-      <div class="modal-header">
-        <h3 data-ar="إضافة إرشادة صحية" data-en="Add Health Guideline">إضافة إرشادة صحية</h3>
-        <button class="modal-close" onclick="closeGuidelineModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الرمز التعبيري (Emoji)" data-en="Emoji">الرمز التعبيري (Emoji)</label>
-          <input type="text" id="guideline-emoji" placeholder="e.g. 🌾" maxlength="5" />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="العنوان (EN)" data-en="Title (EN)">العنوان (EN)</label>
-          <input type="text" id="guideline-title-en" placeholder="e.g. Fiber" />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="العنوان (AR)" data-en="Title (AR)">العنوان (AR)</label>
-          <input type="text" id="guideline-title-ar" placeholder="مثال: الألياف" dir="rtl" />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الوصف (EN)" data-en="Description (EN)">الوصف (EN)</label>
-          <textarea id="guideline-desc-en" placeholder="Description in English..." style="min-height:80px;"></textarea>
-        </div>
-        <div class="form-group">
-          <label data-ar="الوصف (AR)" data-en="Description (AR)">الوصف (AR)</label>
-          <textarea id="guideline-desc-ar" placeholder="الوصف بالعربية..." dir="rtl"
-            style="min-height:80px;"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-gray" onclick="closeGuidelineModal()" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
-        <button class="btn btn-green" onclick="saveGuideline()" data-ar="حفظ" data-en="Save">حفظ</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======== SOCIAL LINK MODAL ======== -->
-  <div id="social-link-modal" class="modal-overlay hidden">
-    <div class="modal-box" style="max-width:500px;">
-      <div class="modal-header">
-        <h3 data-ar="إضافة رابط اجتماعي" data-en="Add Social Link">إضافة رابط اجتماعي</h3>
-        <button class="modal-close" onclick="closeSocialLinkModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الاسم (Label)" data-en="Label">الاسم (Label)</label>
-          <input type="text" id="social-link-label" placeholder="e.g. Instagram" />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الرابط (URL)" data-en="URL">الرابط (URL)</label>
-          <input type="url" id="social-link-url" placeholder="https://..." />
-        </div>
-        <div class="form-group" style="margin-bottom:12px;">
-          <label data-ar="الرمز (Icon Emoji or name)" data-en="Icon">الرمز (Icon Emoji or name)</label>
-          <input type="text" id="social-link-icon" placeholder="📸 or instagram" maxlength="20" />
-        </div>
-        <div class="form-group">
-          <label data-ar="اللون (Hex)" data-en="Color (Hex)">اللون (Hex)</label>
-          <input type="text" id="social-link-color" placeholder="#E1306C" maxlength="7" />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-gray" onclick="closeSocialLinkModal()" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
-        <button class="btn btn-green" onclick="saveSocialLink()" data-ar="حفظ" data-en="Save">حفظ</button>
       </div>
     </div>
   </div>
@@ -1518,7 +1307,7 @@
       if (target) target.classList.add('active');
 
       var navItems = document.querySelectorAll('.nav-item');
-      var sectionMap = ['dashboard', 'categories', 'items', 'qrcode', 'settings', 'guidelines', 'about', 'social', 'reviews'];
+      var sectionMap = ['dashboard', 'categories', 'items', 'qrcode', 'settings', 'reviews'];
       navItems.forEach(function (btn, i) {
         btn.classList.toggle('active', sectionMap[i] === name);
       });
@@ -1527,9 +1316,6 @@
       if (name === 'dashboard') { updateDashboardStats(); renderRecentItems(); }
       if (name === 'qrcode') { setTimeout(function () { loadUploadedQR(); }, 100); }
       if (name === 'categories') renderCatsTable();
-      if (name === 'guidelines') renderGuidelinesList();
-      if (name === 'about') loadAboutUs();
-      if (name === 'social') renderSocialLinksList();
       if (name === 'reviews') renderReviewsTable();
     }
 
@@ -1699,9 +1485,6 @@
       document.getElementById('item-protein').value = '';
       document.getElementById('item-carbs').value = '';
       document.getElementById('item-fats').value = '';
-      document.getElementById('item-discount-type').value = 'none';
-      document.getElementById('item-discount-value').value = '';
-      document.getElementById('item-image-size').value = 'medium';
       document.getElementById('item-visible').checked = true;
       clearPortions();
 
@@ -1730,9 +1513,6 @@
           document.getElementById('item-protein').value = item.protein || '';
           document.getElementById('item-carbs').value = item.carbs || '';
           document.getElementById('item-fats').value = item.fats || '';
-          document.getElementById('item-discount-type').value = item.discountType || 'none';
-          document.getElementById('item-discount-value').value = item.discountValue || '';
-          document.getElementById('item-image-size').value = item.imageSize || 'medium';
           document.getElementById('item-visible').checked = item.visible !== false;
           if (item.img) {
             preview.src = item.img;
@@ -1778,10 +1558,7 @@
         protein: document.getElementById('item-protein').value,
         carbs: document.getElementById('item-carbs').value,
         fats: document.getElementById('item-fats').value,
-        fat: document.getElementById('item-fats').value,
-        discountType: document.getElementById('item-discount-type').value,
-        discountValue: document.getElementById('item-discount-value').value,
-        imageSize: document.getElementById('item-image-size').value,
+        fat: document.getElementById('item-fats').value, // save both 'fat' and 'fats'
         portions: getPortions(),
         priceSm: '',
         priceMd: document.getElementById('item-price').value,
@@ -2110,275 +1887,20 @@
     }
 
     // =============================================
-    // HEALTH GUIDELINES
+    // SETTINGS
     // =============================================
-    function getGuidelines() {
-      try { return JSON.parse(localStorage.getItem('wh_guidelines') || '[]'); } catch (e) { return []; }
-    }
-    function saveGuidelines(guidelines) {
-      localStorage.setItem('wh_guidelines', JSON.stringify(guidelines));
-    }
-    function renderGuidelinesList() {
-      var guidelines = getGuidelines();
-      var list = document.getElementById('guidelines-list');
-      if (!guidelines.length) {
-        list.innerHTML = '<div style="padding:20px;text-align:center;color:#aaa;">لا توجد إرشادات بعد</div>';
-        return;
-      }
-      list.innerHTML = '<table><thead><tr><th data-ar="الرمز" data-en="Icon">الرمز</th><th data-ar="العنوان" data-en="Title">العنوان</th><th data-ar="الإجراءات" data-en="Actions">الإجراءات</th></tr></thead><tbody>' +
-        guidelines.map(function (g, i) {
-          return '<tr><td style="font-size:1.5rem;">' + (g.emoji || '•') + '</td><td>' + (isAR() ? g.titleAr : g.titleEn) + '</td><td style="display:flex;gap:6px;"><button class="btn btn-blue" style="padding:5px 10px;" onclick="editGuideline(' + i + ')"><span class="material-symbols-outlined" style="font-size:16px;">edit</span></button><button class="btn btn-red" style="padding:5px 10px;" onclick="deleteGuideline(' + i + ')"><span class="material-symbols-outlined" style="font-size:16px;">delete</span></button></td></tr>';
-        }).join('') +
-        '</tbody></table>';
-    }
-    function openGuidelineModal() {
-      document.getElementById('guideline-modal').classList.remove('hidden');
-      document.getElementById('guideline-modal').dataset.editIndex = '';
-      document.getElementById('guideline-emoji').value = '';
-      document.getElementById('guideline-title-en').value = '';
-      document.getElementById('guideline-title-ar').value = '';
-      document.getElementById('guideline-desc-en').value = '';
-      document.getElementById('guideline-desc-ar').value = '';
-    }
-    function closeGuidelineModal() {
-      document.getElementById('guideline-modal').classList.add('hidden');
-    }
-    function saveGuideline() {
-      var emoji = document.getElementById('guideline-emoji').value.trim();
-      var titleEn = document.getElementById('guideline-title-en').value.trim();
-      var titleAr = document.getElementById('guideline-title-ar').value.trim();
-      var descEn = document.getElementById('guideline-desc-en').value.trim();
-      var descAr = document.getElementById('guideline-desc-ar').value.trim();
-      if (!titleEn && !titleAr) { alert('أدخل العنوان'); return; }
-      var guidelines = getGuidelines();
-      var editIndex = document.getElementById('guideline-modal').dataset.editIndex;
-      var guideline = { emoji: emoji, titleEn: titleEn, titleAr: titleAr, descEn: descEn, descAr: descAr };
-      if (editIndex !== '') {
-        guidelines[parseInt(editIndex)] = guideline;
-      } else {
-        guidelines.push(guideline);
-      }
-      saveGuidelines(guidelines);
-      closeGuidelineModal();
-      renderGuidelinesList();
-      showToast(isAR() ? 'تم حفظ الإرشادة ✓' : 'Guideline saved ✓');
-    }
-    function editGuideline(idx) {
-      var guidelines = getGuidelines();
-      var g = guidelines[idx];
-      document.getElementById('guideline-modal').classList.remove('hidden');
-      document.getElementById('guideline-modal').dataset.editIndex = idx;
-      document.getElementById('guideline-emoji').value = g.emoji || '';
-      document.getElementById('guideline-title-en').value = g.titleEn || '';
-      document.getElementById('guideline-title-ar').value = g.titleAr || '';
-      document.getElementById('guideline-desc-en').value = g.descEn || '';
-      document.getElementById('guideline-desc-ar').value = g.descAr || '';
-    }
-    function deleteGuideline(idx) {
-      if (!confirm(isAR() ? 'حذف هذه الإرشادة؟' : 'Delete this guideline?')) return;
-      var guidelines = getGuidelines();
-      guidelines.splice(idx, 1);
-      saveGuidelines(guidelines);
-      renderGuidelinesList();
-      showToast(isAR() ? 'تم حذف الإرشادة' : 'Guideline deleted');
-    }
-
-    // =============================================
-    // ABOUT US
-    // =============================================
-    function saveAboutUs() {
-      var textEn = document.getElementById('about-text-en').value.trim();
-      var textAr = document.getElementById('about-text-ar').value.trim();
-      localStorage.setItem('wh_about_text_en', textEn);
-      localStorage.setItem('wh_about_text_ar', textAr);
-      showToast(isAR() ? 'تم حفظ النص ✓' : 'About Us saved ✓');
-    }
-    function loadAboutUs() {
-      var textEn = localStorage.getItem('wh_about_text_en') || '';
-      var textAr = localStorage.getItem('wh_about_text_ar') || '';
-      if (document.getElementById('about-text-en')) document.getElementById('about-text-en').value = textEn;
-      if (document.getElementById('about-text-ar')) document.getElementById('about-text-ar').value = textAr;
-    }
-
-    // =============================================
-    // SOCIAL LINKS
-    // =============================================
-    function getSocialLinks() {
-      try { return JSON.parse(localStorage.getItem('wh_social_links') || '[]'); } catch (e) { return []; }
-    }
-    function saveSocialLinks(links) {
-      localStorage.setItem('wh_social_links', JSON.stringify(links));
-    }
-    function renderSocialLinksList() {
-      var links = getSocialLinks();
-      var list = document.getElementById('social-links-list');
-      if (!links.length) {
-        list.innerHTML = '<div style="padding:20px;text-align:center;color:#aaa;">لا توجد روابط بعد</div>';
-        return;
-      }
-      list.innerHTML = '<table><thead><tr><th data-ar="الرمز" data-en="Icon">الرمز</th><th data-ar="الاسم" data-en="Label">الاسم</th><th data-ar="الرابط" data-en="URL">الرابط</th><th data-ar="الإجراءات" data-en="Actions">الإجراءات</th></tr></thead><tbody>' +
-        links.map(function (l, i) {
-          return '<tr><td style="font-size:1.5rem;">' + (l.icon || '•') + '</td><td>' + (l.label || '') + '</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;"><small>' + (l.url || '') + '</small></td><td style="display:flex;gap:6px;"><button class="btn btn-blue" style="padding:5px 10px;" onclick="editSocialLink(' + i + ')"><span class="material-symbols-outlined" style="font-size:16px;">edit</span></button><button class="btn btn-red" style="padding:5px 10px;" onclick="deleteSocialLink(' + i + ')"><span class="material-symbols-outlined" style="font-size:16px;">delete</span></button></td></tr>';
-        }).join('') +
-        '</tbody></table>';
-    }
-    function openSocialLinkModal() {
-      document.getElementById('social-link-modal').classList.remove('hidden');
-      document.getElementById('social-link-modal').dataset.editIndex = '';
-      document.getElementById('social-link-label').value = '';
-      document.getElementById('social-link-url').value = '';
-      document.getElementById('social-link-icon').value = '';
-      document.getElementById('social-link-color').value = '';
-    }
-    function closeSocialLinkModal() {
-      document.getElementById('social-link-modal').classList.add('hidden');
-    }
-    function saveSocialLink() {
-      var label = document.getElementById('social-link-label').value.trim();
-      var url = document.getElementById('social-link-url').value.trim();
-      var icon = document.getElementById('social-link-icon').value.trim();
-      var color = document.getElementById('social-link-color').value.trim();
-      if (!label || !url) { alert('أدخل الاسم والرابط'); return; }
-      var links = getSocialLinks();
-      var editIndex = document.getElementById('social-link-modal').dataset.editIndex;
-      var link = { label: label, url: url, icon: icon, color: color };
-      if (editIndex !== '') {
-        links[parseInt(editIndex)] = link;
-      } else {
-        links.push(link);
-      }
-      saveSocialLinks(links);
-      closeSocialLinkModal();
-      renderSocialLinksList();
-      showToast(isAR() ? 'تم حفظ الرابط ✓' : 'Link saved ✓');
-    }
-    function editSocialLink(idx) {
-      var links = getSocialLinks();
-      var l = links[idx];
-      document.getElementById('social-link-modal').classList.remove('hidden');
-      document.getElementById('social-link-modal').dataset.editIndex = idx;
-      document.getElementById('social-link-label').value = l.label || '';
-      document.getElementById('social-link-url').value = l.url || '';
-      document.getElementById('social-link-icon').value = l.icon || '';
-      document.getElementById('social-link-color').value = l.color || '';
-    }
-    function deleteSocialLink(idx) {
-      if (!confirm(isAR() ? 'حذف هذا الرابط؟' : 'Delete this link?')) return;
-      var links = getSocialLinks();
-      links.splice(idx, 1);
-      saveSocialLinks(links);
-      renderSocialLinksList();
-      showToast(isAR() ? 'تم حذف الرابط' : 'Link deleted');
-    }
-    function saveBrandingSettings() {
-      // Save caption
-      var captionEn = document.getElementById('settings-caption-en').value.trim() || 'Eat Well. Live Well.';
-      var captionAr = document.getElementById('settings-caption-ar').value.trim() || 'كُل صح. عِش صح.';
-      localStorage.setItem('wh_caption_en', captionEn);
-      localStorage.setItem('wh_caption_ar', captionAr);
-
-      // Save banner settings
-      var bannerEnabled = document.getElementById('settings-banner-enabled').checked;
-      var bannerText = document.getElementById('settings-banner-text').value.trim();
-      localStorage.setItem('wh_banner_enabled', bannerEnabled ? 'true' : 'false');
-      localStorage.setItem('wh_banner_text', bannerText);
-
-      // Handle logo upload
-      var logoInput = document.getElementById('settings-logo');
-      if (logoInput && logoInput.files && logoInput.files[0]) {
-        var logoFile = logoInput.files[0];
-        var logoReader = new FileReader();
-        logoReader.onload = function (e) {
-          try {
-            localStorage.setItem('wh_logo', e.target.result);
-            showToast(isAR() ? 'تم حفظ الشعار ✓' : 'Logo saved ✓');
-          } catch (err) {
-            alert(isAR() ? 'حجم الصورة كبير جداً' : 'Image is too large');
-          }
-        };
-        logoReader.readAsDataURL(logoFile);
-      }
-
-      // Handle cover image upload
-      var coverInput = document.getElementById('settings-cover');
-      if (coverInput && coverInput.files && coverInput.files[0]) {
-        var coverFile = coverInput.files[0];
-        var coverReader = new FileReader();
-        coverReader.onload = function (e) {
-          try {
-            localStorage.setItem('wh_cover_image', e.target.result);
-            showToast(isAR() ? 'تم حفظ صورة الغلاف ✓' : 'Cover image saved ✓');
-          } catch (err) {
-            alert(isAR() ? 'حجم الصورة كبير جداً' : 'Image is too large');
-          }
-        };
-        coverReader.readAsDataURL(coverFile);
-      }
-
-      // Show success only for caption and banner (since image uploads are async)
-      if (!logoInput.files.length && !coverInput.files.length) {
-        showToast(isAR() ? 'تم حفظ الإعدادات ✓' : 'Settings saved ✓');
-      }
-    }
-
-    function saveRestaurantInfo() {
+    function saveSettings() {
       var name = document.getElementById('settings-name').value.trim();
       var email = document.getElementById('settings-email').value.trim();
       var settings = { name: name, email: email };
       localStorage.setItem('wh_settings', JSON.stringify(settings));
-      showToast(isAR() ? 'تم حفظ البيانات ✓' : 'Info saved ✓');
+      showToast(isAR() ? 'تم حفظ الإعدادات ✓' : 'Settings saved ✓');
     }
-
-    function loadBrandingSettings() {
-      // Load captions
-      var captionEn = localStorage.getItem('wh_caption_en') || 'Eat Well. Live Well.';
-      var captionAr = localStorage.getItem('wh_caption_ar') || 'كُل صح. عِش صح.';
-      if (document.getElementById('settings-caption-en')) {
-        document.getElementById('settings-caption-en').value = captionEn;
-      }
-      if (document.getElementById('settings-caption-ar')) {
-        document.getElementById('settings-caption-ar').value = captionAr;
-      }
-
-      // Load banner
-      var bannerEnabled = localStorage.getItem('wh_banner_enabled') === 'true';
-      var bannerText = localStorage.getItem('wh_banner_text') || '';
-      if (document.getElementById('settings-banner-enabled')) {
-        document.getElementById('settings-banner-enabled').checked = bannerEnabled;
-      }
-      if (document.getElementById('settings-banner-text')) {
-        document.getElementById('settings-banner-text').value = bannerText;
-      }
-
-      // Load logo preview
-      var logo = localStorage.getItem('wh_logo');
-      if (logo && document.getElementById('logo-preview')) {
-        document.getElementById('logo-preview').src = logo;
-        document.getElementById('logo-preview').style.display = 'block';
-      }
-
-      // Load cover preview
-      var cover = localStorage.getItem('wh_cover_image');
-      if (cover && document.getElementById('cover-preview')) {
-        document.getElementById('cover-preview').src = cover;
-        document.getElementById('cover-preview').style.display = 'block';
-      }
-    }
-
-    // =============================================
-    // SETTINGS
-    // =============================================
-    function saveSettings() {
-      saveBrandingSettings();
-      saveRestaurantInfo();
-    }
-
     function loadSettings() {
-      loadBrandingSettings();
       try {
         var s = JSON.parse(localStorage.getItem('wh_settings') || '{}');
-        if (s.name && document.getElementById('settings-name')) document.getElementById('settings-name').value = s.name;
-        if (s.email && document.getElementById('settings-email')) document.getElementById('settings-email').value = s.email;
+        if (s.name) document.getElementById('settings-name').value = s.name;
+        if (s.email) document.getElementById('settings-email').value = s.email;
       } catch (e) { }
     }
 
@@ -2409,10 +1931,6 @@
       updateDashboardStats();
       renderRecentItems();
       loadSettings();
-      loadBrandingSettings();
-      loadAboutUs();
-      renderGuidelinesList();
-      renderSocialLinksList();
       loadUploadedQR();
     });
   </script>
